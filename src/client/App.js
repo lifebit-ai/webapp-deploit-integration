@@ -17,14 +17,16 @@ class App extends Component {
       jobId: cookies.get(COOKIE_NAME)
     }
     this.submitFile = this.submitFile.bind(this)
+    this.render = this.render.bind(this)
   }
 
   submitFile = event => {
-    this.setState({ submitting: true })
+    const self = this
+    self.setState({ submitting: true })
     event.preventDefault()
     console.log('eve', event.target.elements)
     const formData = new FormData()
-    formData.append('file', this.state.file)
+    formData.append('file', self.state.file)
     axios.post('/api/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -35,7 +37,7 @@ class App extends Component {
       console.error(error)
     }).then(response => {
       console.log('uploaded', response)
-      const cookies = this.props
+      const cookies = self.props
       this.setState({ submitting: false, jobId: cookies.get(COOKIE_NAME) })
     })
   }
@@ -90,7 +92,7 @@ class JobStatus extends Component { // eslint-disable-line
   }
 
   componentDidMount() {
-    this.timerID = setInterval(this.check, 1000)
+    this.timerID = setInterval(this.check, 5000)
   }
 
   componentWillUnmount() {
