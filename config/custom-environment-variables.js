@@ -5,6 +5,8 @@ module.exports = {
     secret: 'AWS_SECRET',
   },
   lifebit: {
-    apikey: 'LIFEBIT_API_KEY'
+    apikey: 'LIFEBIT_API_KEY',
+    workflow: 'LIFEBIT_WORKFLOW',
+    project: 'LIFEBIT_PROJECT'
   }
 }
