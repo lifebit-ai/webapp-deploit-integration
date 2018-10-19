@@ -75,13 +75,11 @@ const Overlay = ({ children }) => <div className="overlay">{children}</div>
 const Loader = () => <div className="loader" />
 
 const FileUploader = ({ parent, file }) => (
-  <form onSubmit={parent.submitFile}>
-    <section>
-      <input onChange={e => parent.setState({ file: (e.target.files && e.target.files[0] ? e.target.files[0] : null) })} type="file" name="file" />
-    </section>
-    <section>
-      <button disabled={file ? false : 'disabled'} type="submit" value="Submit">Send</button>
-    </section>
+  <form onSubmit={parent.submitFile} className="form-upload">
+    <div className="form-label-group">
+      <input className="form-control" onChange={e => parent.setState({ file: (e.target.files && e.target.files[0] ? e.target.files[0] : null) })} type="file" name="file" />
+    </div>
+    <button className="btn btn-lg btn-primary btn-block" disabled={file ? false : 'disabled'} type="submit" value="Submit">Send</button>
   </form>
 )
 
