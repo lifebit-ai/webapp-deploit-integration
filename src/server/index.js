@@ -48,7 +48,7 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
   res.cookie('jobId', job._id, { maxAge: 900000 })
   // res.clearCookie('name')
   // res.status(200).json({ success: true, job })
-  res.status(200).json({ success: true, file })
+  res.status(200).json({ success: true, file, jobId: job._id })
 })
 
 app.get('/api/job', async (req, res) => {

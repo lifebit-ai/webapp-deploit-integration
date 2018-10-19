@@ -32,13 +32,12 @@ class App extends Component {
         'Content-Type': 'multipart/form-data'
       }
     }).then(response => {
-      console.log(response)
+      console.log('uploaded', response)
+      const { jobId } = response.data
+      self.setState({ submitting: false, jobId })
     }).catch(error => {
       console.error(error)
-    }).then(response => {
-      console.log('uploaded', response)
-      const cookies = self.props
-      this.setState({ submitting: false, jobId: cookies.get(COOKIE_NAME) })
+      self.setState({ submitting: false })
     })
   }
 
@@ -49,6 +48,8 @@ class App extends Component {
     if (jobId) {
       if (status === 'completed') {
         content = <Results parent={this} />
+      } else if (status === 'failed') {
+        content = <div>Sorry the computation of your ancestry failed</div>
       } else {
         content = <JobStatus parent={this} />
       }
@@ -112,7 +113,6 @@ class JobStatus extends Component { // eslint-disable-line
   }
 
   render() {
-    const { status } = this.state
     return (
       <div>
         Computing your ancestry. Please wait ...
