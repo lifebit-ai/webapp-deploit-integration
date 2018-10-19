@@ -45,7 +45,7 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
   const job = await lifebit.startAncestryJob(file)
 
   // res.cookie('jobId', '5bc87c9c55424c2b6c303b3c', { maxAge: 900000 })
-  res.cookie('jobId', job._id, { maxAge: 900000 })
+  res.cookie('jobId', job._id, { maxAge: 3600000 })
   // res.clearCookie('name')
   // res.status(200).json({ success: true, job })
   res.status(200).json({ success: true, file, jobId: job._id })
