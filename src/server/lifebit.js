@@ -10,8 +10,9 @@ function LifeBitUtility(apikey) {
 
   const host = 'api.lifebit.ai'
 
-  this.startJob = ({ workflow, project, instanceType, parameters, executionPlatform = 'aws' }) => {
+  this.startJob = ({ command, workflow, project, instanceType, parameters, executionPlatform = 'aws' }) => {
     const data = {
+      command,
       workflow,
       project,
       instanceType,
@@ -38,7 +39,7 @@ function LifeBitUtility(apikey) {
       },
       {
         prefix: '--',
-        name: 'rawdata',
+        name: 'file1=',
         dataItemEmbedded: {
           type: 'S3File',
           data: {
@@ -51,6 +52,7 @@ function LifeBitUtility(apikey) {
       }
     ]
     const data = {
+      command: config.get('lifebit.command'),
       workflow: config.get('lifebit.workflow'),
       project: config.get('lifebit.project'),
       instanceType: config.get('lifebit.instanceType'),
