@@ -20,13 +20,13 @@ function LifeBitUtility(apikey) {
     }
     return axios({
       method: 'post',
-      url: `https://${host}/jobs`,
+      url: `https://${host}/api/v1/jobs`,
       headers,
       data
     }).then(response => response.data)
   }
 
-  this.getJob = jobId => axios.get(`https://${host}/jobs/${jobId}`, { headers }).then(response => response.data)
+  this.getJob = jobId => axios.get(`https://${host}/api/v1/jobs/${jobId}`, { headers }).then(response => response.data)
 
   this.startAncestryJob = file => {
     const parameters = [
