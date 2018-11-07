@@ -39,7 +39,7 @@ function LifeBitUtility(apikey) {
       },
       {
         prefix: '--',
-        name: 'file1=',
+        name: 'file',
         dataItemEmbedded: {
           type: 'S3File',
           data: {
