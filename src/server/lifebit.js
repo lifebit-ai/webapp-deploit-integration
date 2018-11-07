@@ -8,7 +8,7 @@ function LifeBitUtility(apikey) {
     apikey
   }
 
-  const host = 'api.lifebit.ai'
+  const host = 'deploit.lifebit.ai'
 
   this.startJob = ({ command, workflow, project, instanceType, parameters, executionPlatform = 'aws' }) => {
     const data = {
@@ -35,7 +35,7 @@ function LifeBitUtility(apikey) {
         prefix: '--',
         name: 'runs',
         parameterKind: 'textValue',
-        textValue: 5
+        textValue: 1
       },
       {
         prefix: '--',
